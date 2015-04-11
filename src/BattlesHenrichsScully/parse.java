@@ -18,7 +18,10 @@ public class parse{
 		int counter = 0;
 		while(!rawData.get(counter).equals("END INPUT")){
 			if(rawData.get(counter).toLowerCase().equals("vacancies and departments")){
+				++counter;
+				++counter;
 				while(!rawData.get(counter).toLowerCase().equals("job applicants") && !rawData.get(counter).isEmpty()){
+					//System.out.println(rawData.get(counter));
 					String department[] = rawData.get(counter).split(" ");
 					Department holdDep = new Department(department[1],Integer.valueOf(department[0]));
 					depList.add(holdDep);
@@ -26,36 +29,68 @@ public class parse{
 				}
 			}else if(rawData.get(counter).toLowerCase().equals("job applicants")){
 				++counter;
+				++counter;
+				//System.out.println(rawData.get(counter));
 				while(!rawData.get(counter).isEmpty()){
+					//System.out.println(rawData.get(counter));
 					Applicant holdApp = new Applicant(rawData.get(counter));
 					applList.add(holdApp);
 					++counter;
 				}
 			}else if(rawData.get(counter).toLowerCase().startsWith("preferences")){
 				while(rawData.get(counter).toLowerCase().startsWith("preferences")){
+					//System.out.println(rawData.get(counter));
 					String hold[] = rawData.get(counter).split(" ");
+					int size = hold.length;
 					//maybe add dynamic pref adding here
 					Department holdReturn = null;
-					for(Department d : depList){
-						if(hold[1].equals(d.getName())){
-							holdReturn = d;
-						}
-					}
-					if(holdReturn.equals(null)){
-						String holdAppName = hold[1] + " " + hold[2];
+					Applicant holdReturn2 = null;
+					if(size == 2){
+						//System.out.println("size == 2");
 						for(Department d : depList){
-							if(holdAppName.equals(d.getName())){
+							if(hold[1].equals(d.getName())){
 								holdReturn = d;
 							}
 						}
+						//System.out.println(holdReturn.getName());
+						++counter;
+						++counter;
+						//System.out.println(holdReturn.getName());
+						while(!rawData.get(counter).isEmpty()){
+							//System.out.println(rawData.get(counter));
+							//System.out.println(holdReturn.getName() + " inside add loop");
+							holdReturn.Add(rawData.get(counter));
+							++counter;
+						}
 					}
-					++counter;
+					
+					else if(size == 3){
+						String holdAppName = hold[1] + " " + hold[2];
+						//System.out.println(holdAppName);
+						for(Applicant d : applList){
+							if(holdAppName.equals(d.getName())){
+								holdReturn2 = d;
+							}
+						}
+						++counter;
+						++counter;
+						//System.out.println(holdReturn2.getName());
+						while(!rawData.get(counter).isEmpty()){
+							//System.out.println(rawData.get(counter));
+							holdReturn2.Add(rawData.get(counter));
+							++counter;
+						}
+					}
+					/*++counter;
+					System.out.println(holdReturn.getName());
 					while(!rawData.get(counter).isEmpty()){
+						System.out.println(rawData.get(counter));
 						holdReturn.Add(rawData.get(counter));
 						++counter;
-					}
+					}*/
 				}
 			}
+			++counter;
 		}
 		
 		

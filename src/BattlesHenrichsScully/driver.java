@@ -11,8 +11,12 @@ public class Driver{
 		
 		try {
 			ArrayList<String> fileReturn = fileList.readFile();
-			//parse parseFile = new parse(fileReturn);
-			System.out.println(fileReturn.get(0));
+			parse parseFile = new parse(fileReturn);
+			//System.out.println(fileReturn.get(0));
+			//System.out.println(parseFile.getDepList().get(0).getName());
+			//System.out.println(parseFile.getAppList().get(0).getName());
+			//System.out.println(parseFile.getDepList().get(0).depGet(0));
+			//System.out.println(parseFile.getAppList().get(0).appGet(0));
 			} 
 		catch (IOException e) {
 			// TODO Auto-generated catch block
