@@ -1,0 +1,47 @@
+Vacancies and Departments
+
+2 Ax
+1 By
+
+Job Applicants
+
+John Doe
+Jane Doe
+Max Doe
+Min Doe
+
+Preferences Ax
+
+John Doe
+Jane Doe
+Max Doe
+Min Doe
+
+Preferences By
+
+Jane Doe
+Min Doe
+Max Doe
+John Doe
+
+Preferences John Doe
+
+By
+Ax
+
+Preferences Jane Doe
+
+Ax 
+By
+
+Preferences Max Doe
+
+Ax 
+By
+
+Preferences Min Doe
+
+By 
+Ax
+
+END INPUT
