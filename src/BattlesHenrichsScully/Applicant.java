@@ -26,7 +26,7 @@ public class Applicant{
 	 * adds a string to the preferences arraylist
 	 * @param input - the name of an applicant
 	 */
-	public void appAdd(String input){
+	public void Add(String input){
 		this.preferences.add(input);
 	}
 	/**

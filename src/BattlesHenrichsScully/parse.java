@@ -44,14 +44,14 @@ public class parse{
 					if(holdReturn.equals(null)){
 						String holdAppName = hold[1] + " " + hold[2];
 						for(Department d : depList){
-							if(hold[1].equals(d.getName())){
+							if(holdAppName.equals(d.getName())){
 								holdReturn = d;
 							}
 						}
 					}
 					++counter;
 					while(!rawData.get(counter).isEmpty()){
-						holdReturn.depAdd(rawData.get(counter));
+						holdReturn.Add(rawData.get(counter));
 						++counter;
 					}
 				}
