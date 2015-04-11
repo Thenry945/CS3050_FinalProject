@@ -26,14 +26,14 @@ public class Applicant{
 	 * adds a string to the preferences arraylist
 	 * @param input - the name of an applicant
 	 */
-	public void depAdd(String input){
+	public void appAdd(String input){
 		this.preferences.add(input);
 	}
 	/**
 	 * takes in an arraylist index you want to get
 	 * @param x - the arrayList index you want to get
 	 */
-	public String depGet(int x){
+	public String appGet(int x){
 		return this.preferences.get(x);
 	}
 }
