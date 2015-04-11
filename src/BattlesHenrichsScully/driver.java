@@ -11,7 +11,7 @@ public class driver{
 		
 		try {
 			ArrayList<String> fileReturn = fileList.readFile();
-			parse parseFile = new parse();
+			parse parseFile = new parse(fileReturn);
 			System.out.println(fileReturn.get(0));
 			} 
 		catch (IOException e) {
