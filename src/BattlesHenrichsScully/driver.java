@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Driver{
 	
 	public static void main(String args[]){
-		readInFile fileList = new readInFile("inputFiles/JobsApplicants.txt");
+		readInFile fileList = new readInFile("/../../inputFiles/JobsApplicants.txt");
 		//ArrayList<String> fileReturn = fileList.readFile();
 		
 		try {
