@@ -45,4 +45,8 @@ public class Department{
 	public String depGet(int x){
 		return this.preferences.get(x);
 	}
+	
+	public ArrayList<String> getPrefs(){
+		return this.preferences;
+	}
 }

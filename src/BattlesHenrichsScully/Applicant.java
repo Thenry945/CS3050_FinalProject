@@ -36,4 +36,8 @@ public class Applicant{
 	public String appGet(int x){
 		return this.preferences.get(x);
 	}
+	
+	public ArrayList<String> getPrefs() {
+		return this.preferences;
+	}
 }
