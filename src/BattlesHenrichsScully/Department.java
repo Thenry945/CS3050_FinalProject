@@ -7,6 +7,7 @@ public class Department{
 	private String name;
 	private int vacancies;
 	private ArrayList<String> preferences = new ArrayList<String>();
+	private ArrayList<String> employees = new ArrayList<String>();
 	/**
 	 * Creates a department with an array list of its preferences
 	 * @param name - the name of the department
@@ -44,5 +45,14 @@ public class Department{
 	 */
 	public String depGet(int x){
 		return this.preferences.get(x);
+	}
+	
+	public ArrayList<String> getEmployees(){
+		return employees;
+	}
+	
+	public void addEmployee(String newHire){
+		employees.add(newHire);
+		--vacancies;
 	}
 }

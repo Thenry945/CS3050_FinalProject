@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //import /parse.java;
 //import /readInFile.java;
 
-public class Driver{
+public class driver{
 	
 	public static void main(String args[]){
 		readInFile fileList = new readInFile("inputFiles/JobsApplicants.txt");
