@@ -33,7 +33,7 @@ public class Applicant{
 	 * takes in an arraylist index you want to get
 	 * @param x - the arrayList index you want to get
 	 */
-	public String appGet(int x){
+	public String depGet(int x){
 		return this.preferences.get(x);
 	}
 	

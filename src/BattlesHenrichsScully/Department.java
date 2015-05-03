@@ -42,7 +42,7 @@ public class Department{
 	 * takes in an arraylist index you want to get
 	 * @param x - the arrayList index you want to get
 	 */
-	public String depGet(int x){
+	public String appGet(int x){
 		return this.preferences.get(x);
 	}
 	
