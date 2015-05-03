@@ -11,15 +11,15 @@ public class Ranking {
 		setRanking(ranking);
 	}
 	
-	private void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
-	private void setDep(String dep) {
+	public void setDep(String dep) {
 		this.dep = dep;
 	}
 	
-	private void setRanking(int ranking) {
+	public void setRanking(int ranking) {
 		this.ranking = ranking;
 	}
 	

@@ -2,6 +2,7 @@ package BattlesHenrichsScully;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 //import /parse.java;
 //import /readInFile.java;
 
@@ -86,17 +87,41 @@ public class driver{
 							ranking2++;
 						}
 						
-						for(Ranking yeah: rankings) {
+						/*for(Ranking yeah: rankings) {
 							System.out.println(yeah.getName()+" "+yeah.getDep()+" "+yeah.getRanking());
-						}
+						}*/
 						
-						Ranking top_rank = rankings.get(0);
-						for (int temp=0; temp<rankings.size(); ++temp) {
-							if (rankings.get(temp).getRanking() < top_rank.getRanking()) {
-								top_rank = rankings.get(temp);
+						sort(rankings);
+						/*System.out.println("-----------------SORT----------------");
+						for (Ranking test: rankings) {
+							System.out.println(test.getName()+" "+test.getDep()+" "+test.getRanking());
+						}
+						System.out.println("##################END#################");*/
+						
+						Department check_vacancies = null;
+						int top = 0;
+						for (int temp=0; temp < all_deps.size(); ++temp) {
+							//System.out.println(rankings.get(top).getDep().trim());
+							//System.out.println(all_deps.get(temp).getName().trim());
+							if (rankings.get(top).getDep().trim().equals(all_deps.get(temp).getName().trim())) {
+								//System.out.println("BREAKING");
+								check_vacancies = all_deps.get(temp);
+								break;
 							}
 						}
-						while (person1.get_employer() != null || this_dep.getVacancies() < 1) {
+						//System.out.println(check_vacancies+"   "+check_vacancies.getVacancies());
+						while (check_vacancies.getVacancies() < 1) {
+							if (top+1 < all_deps.size()) {
+								top++;
+							}
+							for (int temp=0; temp < all_deps.size(); ++temp) {
+								if (rankings.get(top).getDep().trim().equals(all_deps.get(temp).getName().trim())) {
+									check_vacancies = all_deps.get(temp);
+								}
+							}
+						}
+						Ranking top_rank = rankings.get(top);
+						if (person1.get_employer() == null && this_dep.getVacancies() > 0) {
 							person1.set_employer(top_rank.getDep());
 							this_dep.addEmployee(person1.getName());
 							System.out.println(person1.getName()+" "+this_dep.getName());
@@ -110,6 +135,16 @@ public class driver{
 					i++;
 				}
 			}
+			System.out.println();
+			System.out.println("Employment Assignments...");
+			for (Applicant temp: all_apps) {
+				if (temp.get_employer() != null) {
+					System.out.println(temp.getName()+": "+temp.get_employer());
+				}
+				else {
+					System.out.println(temp.getName()+": NONE");
+				}
+			}
 			
 		}
 		catch (IOException e) 
@@ -119,5 +154,30 @@ public class driver{
 		}
 		
 			
+	}
+
+	public static void sort(ArrayList<Ranking> rankings){
+		boolean flag = true;
+		Ranking temp = null;
+		Ranking temp2 = null;
+		while(flag){
+			flag = false;
+			for(int x = 0; x < rankings.size()-1; ++x){
+				if(rankings.get(x).getRanking() > rankings.get(x+1).getRanking()){
+					String temp_name = rankings.get(x).getName();
+					int temp_rankings = rankings.get(x).getRanking();
+					String temp_dep = rankings.get(x).getDep();
+					temp2 = rankings.get(x+1);
+					rankings.get(x).setName(temp2.getName());
+					rankings.get(x).setDep(temp2.getDep());
+					rankings.get(x).setRanking(temp2.getRanking());
+					rankings.get(x+1).setName(temp_name);
+					rankings.get(x+1).setDep(temp_dep);
+					rankings.get(x+1).setRanking(temp_rankings);
+					flag = true;
+				}
+			}
+		}
+		return;
 	}
 }
