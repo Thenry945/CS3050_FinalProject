@@ -5,13 +5,6 @@ Collaborators:
  --- Travis Henrichs 
  --- Mitch Battles
 
-How to run program (in babbage):
+Warning... Use Eclipse IDE to compile and run java code!
 
-1) Go to file directory
-
-2) Compile Java code
-
-3) Run java code 
-
-4) (Any other instructions, go into more details)
-
+Feel free to email us if you have any questions about the code or our algorithm design 
