@@ -50,4 +50,7 @@ public class Applicant{
 	public ArrayList<String> getPrefs() {
 		return this.preferences;
 	}
+	public void remove_dep(int temp){
+		preferences.remove(temp);
+	}
 }

@@ -48,8 +48,7 @@ public class driver{
 				
 				int i = 0;
 				
-				while (i <= all_deps.get(counter).getPrefs().size()-1) {
-				//while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
+				while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
 					
 					Applicant person1 = null; // assign the current applicant in the department's list to person 1
 					for (int temp=0; temp<all_apps.size(); ++temp) {
@@ -58,42 +57,61 @@ public class driver{
 							break;
 						}
 					}
-					//System.out.println(person1.getName());
-					//if (person1 != null) System.out.println(person1.getName());
 					
-					ArrayList<Ranking> rankings = new ArrayList<Ranking>();
-					int ranking = 0;
-					int ranking2 = 1;
-					Department this_dep = null;
-					for (String dep: person1.getPrefs()){
-						for (int thiss = 0; thiss < person1.getPrefs().size(); ++thiss) {
-							if (person1.getPrefs().get(thiss).equals(dep)) {
-								this_dep = all_deps.get(thiss);
-								break;
+					if (person1.get_employer() == null) {
+						//System.out.println(person1.getName());
+						//if (person1 != null) System.out.println(person1.getName());
+						
+						ArrayList<Ranking> rankings = new ArrayList<Ranking>();
+						int ranking = 0;
+						int ranking2 = 1;
+						Department this_dep = null;
+						for (String dep: person1.getPrefs()){
+							for (int thiss = 0; thiss < person1.getPrefs().size(); ++thiss) {
+								if (person1.getPrefs().get(thiss).equals(dep)) {
+									this_dep = all_deps.get(thiss);
+									break;
+								}
+							}
+							if (this_dep.getVacancies() != 0) {
+								for (int temp = 0; temp < all_apps.size(); ++temp ){
+									if (this_dep.appGet(temp).equals(person1.getName())) {
+										ranking = temp+1;
+										int total_rank = ranking + ranking2;
+										//System.out.println(ranking + " " + ranking2);
+										rankings.add(new Ranking(person1.getName(), dep, total_rank));
+									}
+								}
+							}
+							ranking2++;
+						}
+						
+						for(Ranking yeah: rankings) {
+							System.out.println(yeah.getName()+" "+yeah.getDep()+" "+yeah.getRanking());
+						}
+						
+						Ranking top_rank = rankings.get(0);
+						for (int temp=0; temp<rankings.size(); ++temp) {
+							if (rankings.get(temp).getRanking() < top_rank.getRanking()) {
+								top_rank = rankings.get(temp);
 							}
 						}
-						for (int temp = 0; temp < all_apps.size(); ++temp ){
-							if (this_dep.appGet(temp).equals(person1.getName())) {
-								ranking = temp+1;
-								int total_rank = ranking + ranking2;
-								//System.out.println(ranking + " " + ranking2);
-								rankings.add(new Ranking(person1.getName(), dep, total_rank));
-							}
+						while (person1.get_employer() != null || this_dep.getVacancies() < 1) {
+							person1.set_employer(top_rank.getDep());
+							this_dep.addEmployee(person1.getName());
+							System.out.println(person1.getName()+" "+this_dep.getName());
 						}
-						ranking2++;
+						
+						
+						//Find the first person which the first company wants.  Calculate that weight and then go the that person's individual preferences and create an arraylist 
+						//of weights for that person's preferences and the companies that they want in order.  Then loops through the array list with all of the weights and assign that person to
+						//the company with the lowest weight, but still add a person to the first company since we are trying to implement a first-come-first-serve algorithm in a sense.
 					}
-					
-					for(Ranking yeah: rankings) {
-						System.out.println(yeah.getName()+" "+yeah.getDep()+" "+yeah.getRanking());
-					}
-					//System.out.println("");
-					//System.out.println(":" + rankings.get(1).getRanking());
-					//System.out.println(":" + rankings.get(0).getRanking());
-					rankings.clear();
-					
+
 					//Find the first person which the first company wants.  Calculate that weight and then go the that person's individual preferences and create an arraylist 
 					//of weights for that person's preferences and the companies that they want in order.  Then loops through the array list with all of the weights and assign that person to
 					//the company with the lowest weight, but still add a person to the first company since we are trying to implement a first-come-first-serve algorithm in a sense.
+
 					i++;
 				}
 			}
