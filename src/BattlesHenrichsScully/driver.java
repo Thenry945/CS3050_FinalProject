@@ -24,23 +24,23 @@ public class driver{
 			ArrayList<Applicant> all_apps = parseFile.getAppList();
 			
 			for (int counter = 0; counter < all_deps.size(); counter++) {
-				System.out.println(all_deps.get(counter).getName());
+				//System.out.println(all_deps.get(counter).getName());
 				int i = 0;
 				while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
-					System.out.print(all_deps.get(counter).getPrefs().get(i));
+					//System.out.print(all_deps.get(counter).getPrefs().get(i));
 					for (int j = 0; j <= all_apps.size()-1; ++j) {
 						if (all_apps.get(j).getName().equals(all_deps.get(counter).getPrefs().get(i))){
 							Applicant temp = all_apps.get(j);
-							System.out.print(":  ");
+							//System.out.print(":  ");
 							for (int k=0; k <= temp.getPrefs().size()-1; ++k) {
-								System.out.print(" "+temp.depGet(k)+"->");
+								//System.out.print(" "+temp.depGet(k)+"->");
 							}
-							System.out.println(" ");
+							//System.out.println(" ");
 						}
 					}
 					i++;
 				}
-				System.out.println(" ");
+				//System.out.println(" ");
 			}
 			
 			for (int counter = 0; counter < all_deps.size(); counter++) {
@@ -86,6 +86,9 @@ public class driver{
 					for(Ranking yeah: rankings) {
 						System.out.println(yeah.getName()+" "+yeah.getDep()+" "+yeah.getRanking());
 					}
+					//System.out.println("");
+					//System.out.println(":" + rankings.get(1).getRanking());
+					//System.out.println(":" + rankings.get(0).getRanking());
 					rankings.clear();
 					
 					//Find the first person which the first company wants.  Calculate that weight and then go the that person's individual preferences and create an arraylist 
