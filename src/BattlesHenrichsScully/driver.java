@@ -25,8 +25,35 @@ public class driver{
 			
 			for (int counter = 0; counter < all_deps.size(); counter++) {
 				System.out.println(all_deps.get(counter).getName());
+				int i = 0;
+				while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
+					System.out.print(all_deps.get(counter).getPrefs().get(i));
+					for (int j = 0; j <= all_apps.size()-1; ++j) {
+						if (all_apps.get(j).getName().equals(all_deps.get(counter).getPrefs().get(i))){
+							Applicant temp = all_apps.get(j);
+							System.out.print(":  ");
+							for (int k=0; k <= temp.getPrefs().size()-1; ++k) {
+								System.out.print(" "+temp.appGet(k)+"->");
+							}
+							System.out.println(" ");
+						}
+					}
+					i++;
+				}
+				System.out.println(" ");
 			}
-		} 
+			
+			for (int counter = 0; counter < all_deps.size(); counter++) {
+				System.out.println(all_deps.get(counter).getName());
+				int i = 0;
+				while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
+					//Find the first person which the first company wants.  Calculate that weight and then go the that person's individual preferences and create an arraylist 
+					//of weights for that person's preferences and the companies that they want in order.  Then loops through the array list with all of the weights and assign that person to
+					//the company with the lowest weight, but still add a person to the first company since we are trying to implement a first-come-first-serve algorithm in a sense.  
+				}
+			}
+			
+		}
 		catch (IOException e) 
 		{
 			// TODO Auto-generated catch block

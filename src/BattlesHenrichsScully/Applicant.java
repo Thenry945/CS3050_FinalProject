@@ -34,15 +34,20 @@ public class Applicant{
 	 * takes in an arraylist index you want to get
 	 * @param x - the arrayList index you want to get
 	 */
-	public String appGet(int x){
+	public String depGet(int x){
 		return this.preferences.get(x);
 	}
 	
+
 	public String get_employer(){
 		return employer;
 	}
 	
 	public void set_employer(String employer){
 		this.employer = employer;
+	}
+		
+	public ArrayList<String> getPrefs() {
+		return this.preferences;
 	}
 }

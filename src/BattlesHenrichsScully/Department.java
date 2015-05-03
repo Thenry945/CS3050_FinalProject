@@ -39,13 +39,7 @@ public class Department{
 	public void Add(String input){
 		this.preferences.add(input);
 	}
-	/**
-	 * takes in an arraylist index you want to get
-	 * @param x - the arrayList index you want to get
-	 */
-	public String depGet(int x){
-		return this.preferences.get(x);
-	}
+
 	
 	public ArrayList<String> getEmployees(){
 		return employees;
@@ -54,5 +48,8 @@ public class Department{
 	public void addEmployee(String newHire){
 		employees.add(newHire);
 		--vacancies;
+	}
+	public ArrayList<String> getPrefs(){
+		return this.preferences;
 	}
 }
