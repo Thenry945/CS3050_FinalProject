@@ -104,7 +104,7 @@ public class parse{
 						while(!rawData.get(counter).isEmpty()){
 							//System.out.println(rawData.get(counter));
 							//System.out.println(holdReturn.getName() + " inside add loop");
-							holdReturn.Add(rawData.get(counter));
+							holdReturn.Add(rawData.get(counter).trim());
 							++counter;
 						}
 					}
@@ -131,7 +131,7 @@ public class parse{
 						 */
 						while(!rawData.get(counter).isEmpty()){
 							//System.out.println(rawData.get(counter));
-							holdReturn2.Add(rawData.get(counter));
+							holdReturn2.Add(rawData.get(counter).trim());
 							++counter;
 						}
 					}
