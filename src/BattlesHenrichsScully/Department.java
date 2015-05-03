@@ -7,6 +7,7 @@ public class Department{
 	private String name;
 	private int vacancies;
 	private ArrayList<String> preferences = new ArrayList<String>();
+	private ArrayList<String> employees = new ArrayList<String>();
 	/**
 	 * Creates a department with an array list of its preferences
 	 * @param name - the name of the department
@@ -38,6 +39,7 @@ public class Department{
 	public void Add(String input){
 		this.preferences.add(input);
 	}
+	
 	/**
 	 * takes in an arraylist index you want to get
 	 * @param x - the arrayList index you want to get
@@ -45,7 +47,16 @@ public class Department{
 	public String appGet(int x){
 		return this.preferences.get(x);
 	}
+
 	
+	public ArrayList<String> getEmployees(){
+		return employees;
+	}
+	
+	public void addEmployee(String newHire){
+		employees.add(newHire);
+		--vacancies;
+	}
 	public ArrayList<String> getPrefs(){
 		return this.preferences;
 	}

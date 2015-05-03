@@ -6,6 +6,7 @@ public class Applicant{
 	
 	private String name;
 	private ArrayList<String> preferences = new ArrayList<String>();
+	private String employer = null;
 	/**
 	 * Creates a department with an array list of its preferences
 	 * @param name - the name of the department
@@ -37,6 +38,15 @@ public class Applicant{
 		return this.preferences.get(x);
 	}
 	
+
+	public String get_employer(){
+		return employer;
+	}
+	
+	public void set_employer(String employer){
+		this.employer = employer;
+	}
+		
 	public ArrayList<String> getPrefs() {
 		return this.preferences;
 	}
