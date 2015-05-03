@@ -45,7 +45,7 @@ public class driver{
 			}
 			
 			for (int counter = 0; counter < all_deps.size(); counter++) {
-				System.out.println(all_deps.get(counter).getName()+" "+all_deps.get(counter).getVacancies());
+				//System.out.println(all_deps.get(counter).getName()+" "+all_deps.get(counter).getVacancies());
 				
 				int i = 0;
 				
@@ -80,7 +80,8 @@ public class driver{
 										ranking = temp+1;
 										int total_rank = ranking + ranking2;
 										//System.out.println(ranking + " " + ranking2);
-										rankings.add(new Ranking(person1.getName(), dep, total_rank));
+										//System.out.println(this_dep.getName()+" has: "+this_dep.getVacancies());
+										rankings.add(new Ranking(person1.getName(), this_dep.getName(), total_rank));
 									}
 								}
 							}
@@ -125,8 +126,8 @@ public class driver{
 						Ranking top_rank = rankings.get(top);
 						if (person1.get_employer() == null && this_dep.getVacancies() > 0) {
 							person1.set_employer(top_rank.getDep());
-							this_dep.addEmployee(person1.getName());
-							System.out.println(person1.getName()+" "+this_dep.getName());
+							check_vacancies.addEmployee(person1.getName());
+							System.out.println(person1.getName()+" "+top_rank.getDep());
 						}
 						
 						
@@ -147,6 +148,10 @@ public class driver{
 				else {
 					System.out.println(temp.getName()+": NONE");
 				}
+			}
+			System.out.println();
+			for (Department temp: all_deps) {
+				System.out.println(temp.getName()+" "+temp.getVacancies());
 			}
 			
 		}
