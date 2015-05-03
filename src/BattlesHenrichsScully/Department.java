@@ -60,4 +60,7 @@ public class Department{
 	public ArrayList<String> getPrefs(){
 		return this.preferences;
 	}
+	public void remove_app(int temp) {
+		preferences.remove(temp);
+	}
 }
