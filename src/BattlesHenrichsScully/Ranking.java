@@ -1,5 +1,7 @@
 package BattlesHenrichsScully;
 
+import java.util.ArrayList;
+
 public class Ranking {
 	private String name;
 	private String dep;
@@ -34,4 +36,5 @@ public class Ranking {
 	public int getRanking() {
 		return this.ranking;
 	}
+	
 }
