@@ -49,7 +49,7 @@ public class driver{
 				open_spots += dep.getVacancies();
 			}
 			
-			System.out.println("Open spots: "+open_spots+"    applicants: "+all_apps.size());
+			//System.out.println("Open spots: "+open_spots+"    applicants: "+all_apps.size());
 			
 			if (all_apps.size() >= open_spots) {
 				for (int counter = 0; counter < all_deps.size(); counter++) {
@@ -158,9 +158,9 @@ public class driver{
 					}
 				}
 				System.out.println();
-				for (Department temp: all_deps) {
+				/*for (Department temp: all_deps) {
 					System.out.println(temp.getName()+" "+temp.getVacancies());
-				}
+				}*/
 			}
 			else {
 				System.out.println("There aren't enough applicants to fill all positions...");
