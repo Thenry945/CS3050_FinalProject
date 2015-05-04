@@ -48,18 +48,33 @@ public class Department{
 		return this.preferences.get(x);
 	}
 
-	
+	/**
+	 * returns the employees array list
+	 * @return - array list
+	 */
 	public ArrayList<String> getEmployees(){
 		return employees;
 	}
-	
+	/**
+	 * adds an employee to to the employees array list
+	 * subtracts one from the vacancies 
+	 * @param newHire - string
+	 */
 	public void addEmployee(String newHire){
 		employees.add(newHire);
 		--vacancies;
 	}
+	/**
+	 * return the preferences arraylist
+	 * @return - arraylist
+	 */
 	public ArrayList<String> getPrefs(){
 		return this.preferences;
 	}
+	/**
+	 * remove an applicant at a certain index from the pref list
+	 * @param temp
+	 */
 	public void remove_app(int temp) {
 		preferences.remove(temp);
 	}

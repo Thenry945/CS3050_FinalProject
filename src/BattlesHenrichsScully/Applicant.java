@@ -38,18 +38,31 @@ public class Applicant{
 		return this.preferences.get(x);
 	}
 	
-
+	/**
+	 * getter for the employer
+	 * @return - string
+	 */
 	public String get_employer(){
 		return employer;
 	}
-	
+	/**
+	 * employer setter
+	 * @param employer - string - public because its not constructed
+	 */
 	public void set_employer(String employer){
 		this.employer = employer;
 	}
-		
+	/**
+	 * get the preferences array list	
+	 * @return - arraylist
+	 */
 	public ArrayList<String> getPrefs() {
 		return this.preferences;
 	}
+	/**
+	 * remove an element at a certain index from the pref array list
+	 * @param temp - takes in the index
+	 */
 	public void remove_dep(int temp){
 		preferences.remove(temp);
 	}
