@@ -49,7 +49,7 @@ public class driver{
 				open_spots += dep.getVacancies();
 			}
 			
-			//System.out.println("Open spots: "+open_spots+"    applicants: "+all_apps.size());
+			System.out.println("Open spots: "+open_spots+"    applicants: "+all_apps.size());
 			
 			if (all_apps.size() >= open_spots) {
 				for (int counter = 0; counter < all_deps.size(); counter++) {
