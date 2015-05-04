@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Applicant{
 	
+	//attributes
 	private String name;
 	private ArrayList<String> preferences = new ArrayList<String>();
 	private String employer = null;

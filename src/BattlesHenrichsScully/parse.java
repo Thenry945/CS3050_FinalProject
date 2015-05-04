@@ -3,10 +3,13 @@ package BattlesHenrichsScully;
 import java.util.ArrayList;
 
 public class parse{
-	
+	//attributes - these are the arraylists that will contain the lists of departments and applicants
 	private ArrayList<Department> depList = new ArrayList<Department>();
 	private ArrayList<Applicant> applList = new ArrayList<Applicant>();
-	
+	/**
+	 * constructor
+	 * @param rawData - takes in the raw data array list
+	 */
 	public parse(ArrayList<String> rawData){
 		parseIt(rawData);
 	}
