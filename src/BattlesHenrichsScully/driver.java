@@ -135,7 +135,7 @@ public class driver{
 							if (person1.get_employer() == null && this_dep.getVacancies() > 0) {
 								person1.set_employer(top_rank.getDep());
 								check_vacancies.addEmployee(person1.getName());
-								System.out.println(person1.getName()+" "+top_rank.getDep());
+								//System.out.println(person1.getName()+" "+top_rank.getDep());
 							}
 							
 							
