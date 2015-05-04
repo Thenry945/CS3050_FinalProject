@@ -44,114 +44,126 @@ public class driver{
 				//System.out.println(" ");
 			}
 			
-			for (int counter = 0; counter < all_deps.size(); counter++) {
-				//System.out.println(all_deps.get(counter).getName()+" "+all_deps.get(counter).getVacancies());
-				
-				int i = 0;
-				
-				while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
+			int open_spots = 0;
+			for (Department dep: all_deps) {
+				open_spots += dep.getVacancies();
+			}
+			
+			//System.out.println("Open spots: "+open_spots+"    applicants: "+all_apps.size());
+			
+			if (all_apps.size() >= open_spots) {
+				for (int counter = 0; counter < all_deps.size(); counter++) {
+					//System.out.println(all_deps.get(counter).getName()+" "+all_deps.get(counter).getVacancies());
 					
-					Applicant person1 = null; // assign the current applicant in the department's list to person 1
-					for (int temp=0; temp<all_apps.size(); ++temp) {
-						if (all_apps.get(temp).getName().equals(all_deps.get(counter).appGet(i))) {
-							person1 = all_apps.get(temp);
-							break;
-						}
-					}
+					int i = 0;
 					
-					if (person1.get_employer() == null) {
-						//System.out.println(person1.getName());
-						//if (person1 != null) System.out.println(person1.getName());
+					while (all_deps.get(counter).getVacancies() != 0 && i <= all_deps.get(counter).getPrefs().size()-1) {
 						
-						ArrayList<Ranking> rankings = new ArrayList<Ranking>();
-						int ranking = 0;
-						int ranking2 = 1;
-						Department this_dep = null;
-						for (String dep: person1.getPrefs()){
-							for (int thiss = 0; thiss < person1.getPrefs().size(); ++thiss) {
-								if (person1.getPrefs().get(thiss).equals(dep)) {
-									this_dep = all_deps.get(thiss);
-									break;
-								}
-							}
-							if (this_dep.getVacancies() != 0) {
-								for (int temp = 0; temp < all_apps.size(); ++temp ){
-									if (this_dep.appGet(temp).equals(person1.getName())) {
-										ranking = temp+1;
-										int total_rank = ranking + ranking2;
-										//System.out.println(ranking + " " + ranking2);
-										//System.out.println(this_dep.getName()+" has: "+this_dep.getVacancies());
-										rankings.add(new Ranking(person1.getName(), this_dep.getName(), total_rank));
-									}
-								}
-							}
-							ranking2++;
-						}
-						
-						/*for(Ranking yeah: rankings) {
-							System.out.println(yeah.getName()+" "+yeah.getDep()+" "+yeah.getRanking());
-						}*/
-						
-						sort(rankings);
-						/*System.out.println("-----------------SORT----------------");
-						for (Ranking test: rankings) {
-							System.out.println(test.getName()+" "+test.getDep()+" "+test.getRanking());
-						}
-						System.out.println("##################END#################");*/
-						
-						Department check_vacancies = null;
-						int top = 0;
-						for (int temp=0; temp < all_deps.size(); ++temp) {
-							//System.out.println(rankings.get(top).getDep().trim());
-							//System.out.println(all_deps.get(temp).getName().trim());
-							if (rankings.get(top).getDep().trim().equals(all_deps.get(temp).getName().trim())) {
-								//System.out.println("BREAKING");
-								check_vacancies = all_deps.get(temp);
+						Applicant person1 = null; // assign the current applicant in the department's list to person 1
+						for (int temp=0; temp<all_apps.size(); ++temp) {
+							if (all_apps.get(temp).getName().equals(all_deps.get(counter).appGet(i))) {
+								person1 = all_apps.get(temp);
 								break;
 							}
 						}
-						//System.out.println(check_vacancies+"   "+check_vacancies.getVacancies());
-						while (check_vacancies.getVacancies() < 1) {
-							if (top+1 < all_deps.size()) {
-								top++;
+						
+						if (person1.get_employer() == null) {
+							//System.out.println(person1.getName());
+							//if (person1 != null) System.out.println(person1.getName());
+							
+							ArrayList<Ranking> rankings = new ArrayList<Ranking>();
+							int ranking = 0;
+							int ranking2 = 1;
+							Department this_dep = null;
+							for (String dep: person1.getPrefs()){
+								for (int thiss = 0; thiss < person1.getPrefs().size(); ++thiss) {
+									if (person1.getPrefs().get(thiss).equals(dep)) {
+										this_dep = all_deps.get(thiss);
+										break;
+									}
+								}
+								if (this_dep.getVacancies() != 0) {
+									for (int temp = 0; temp < all_apps.size(); ++temp ){
+										if (this_dep.appGet(temp).equals(person1.getName())) {
+											ranking = temp+1;
+											int total_rank = ranking + ranking2;
+											//System.out.println(ranking + " " + ranking2);
+											//System.out.println(this_dep.getName()+" has: "+this_dep.getVacancies());
+											rankings.add(new Ranking(person1.getName(), this_dep.getName(), total_rank));
+										}
+									}
+								}
+								ranking2++;
 							}
+							
+							/*for(Ranking yeah: rankings) {
+								System.out.println(yeah.getName()+" "+yeah.getDep()+" "+yeah.getRanking());
+							}*/
+							
+							sort(rankings);
+							/*System.out.println("-----------------SORT----------------");
+							for (Ranking test: rankings) {
+								System.out.println(test.getName()+" "+test.getDep()+" "+test.getRanking());
+							}
+							System.out.println("##################END#################");*/
+							
+							Department check_vacancies = null;
+							int top = 0;
 							for (int temp=0; temp < all_deps.size(); ++temp) {
-								System.out.println(rankings.get(top).getDep().trim());
-								System.out.println(all_deps.get(temp).getName().trim());
+								//System.out.println(rankings.get(top).getDep().trim());
+								//System.out.println(all_deps.get(temp).getName().trim());
 								if (rankings.get(top).getDep().trim().equals(all_deps.get(temp).getName().trim())) {
+									//System.out.println("BREAKING");
 									check_vacancies = all_deps.get(temp);
+									break;
 								}
 							}
+							//System.out.println(check_vacancies+"   "+check_vacancies.getVacancies());
+							while (check_vacancies.getVacancies() < 1) {
+								if (top+1 < all_deps.size()) {
+									top++;
+								}
+								for (int temp=0; temp < all_deps.size(); ++temp) {
+									System.out.println(rankings.get(top).getDep().trim());
+									System.out.println(all_deps.get(temp).getName().trim());
+									if (rankings.get(top).getDep().trim().equals(all_deps.get(temp).getName().trim())) {
+										check_vacancies = all_deps.get(temp);
+									}
+								}
+							}
+							Ranking top_rank = rankings.get(top);
+							if (person1.get_employer() == null && this_dep.getVacancies() > 0) {
+								person1.set_employer(top_rank.getDep());
+								check_vacancies.addEmployee(person1.getName());
+								System.out.println(person1.getName()+" "+top_rank.getDep());
+							}
+							
+							
+							//Find the first person which the first company wants.  Calculate that weight and then go the that person's individual preferences and create an arraylist 
+							//of weights for that person's preferences and the companies that they want in order.  Then loops through the array list with all of the weights and assign that person to
+							//the company with the lowest weight, but still add a person to the first company since we are trying to implement a first-come-first-serve algorithm in a sense.
 						}
-						Ranking top_rank = rankings.get(top);
-						if (person1.get_employer() == null && this_dep.getVacancies() > 0) {
-							person1.set_employer(top_rank.getDep());
-							check_vacancies.addEmployee(person1.getName());
-							System.out.println(person1.getName()+" "+top_rank.getDep());
-						}
-						
-						
-						//Find the first person which the first company wants.  Calculate that weight and then go the that person's individual preferences and create an arraylist 
-						//of weights for that person's preferences and the companies that they want in order.  Then loops through the array list with all of the weights and assign that person to
-						//the company with the lowest weight, but still add a person to the first company since we are trying to implement a first-come-first-serve algorithm in a sense.
+	
+						i++;
 					}
-
-					i++;
+				}
+				System.out.println();
+				System.out.println("Employment Assignments...");
+				for (Applicant temp: all_apps) {
+					if (temp.get_employer() != null) {
+						System.out.println(temp.getName()+": "+temp.get_employer());
+					}
+					else {
+						System.out.println(temp.getName()+": NONE");
+					}
+				}
+				System.out.println();
+				for (Department temp: all_deps) {
+					System.out.println(temp.getName()+" "+temp.getVacancies());
 				}
 			}
-			System.out.println();
-			System.out.println("Employment Assignments...");
-			for (Applicant temp: all_apps) {
-				if (temp.get_employer() != null) {
-					System.out.println(temp.getName()+": "+temp.get_employer());
-				}
-				else {
-					System.out.println(temp.getName()+": NONE");
-				}
-			}
-			System.out.println();
-			for (Department temp: all_deps) {
-				System.out.println(temp.getName()+" "+temp.getVacancies());
+			else {
+				System.out.println("There aren't enough applicants to fill all positions...");
 			}
 			
 		}
