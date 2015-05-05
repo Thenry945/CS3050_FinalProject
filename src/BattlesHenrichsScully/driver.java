@@ -1,7 +1,9 @@
 package BattlesHenrichsScully;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+
+import javax.swing.*;
 //import java.util.Collections;
 //import /parse.java;
 //import /readInFile.java;
@@ -9,18 +11,30 @@ import java.util.ArrayList;
 public class driver{
 	
 	public static void main(String args[]){
+		JFrame frame = new JFrame("Input");
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			//System.out.print("Enter the filename: ");
+			//String file_path = br.readLine();
+			
+		//if you put the file in the inputFiles directory then a filepath should look like this
+			//inputFiles/JobsApplicants.txt
+		String file_path = JOptionPane.showInputDialog(frame, "Enter the file path");
+			
 		/*
+		 * Hard-Code your file
 		 * create a readinfile object
 		 * if you want to change which file is going to be read in please put the file into the inputFiles folder
 		 * and then change "JobsApplicants.txt" to whatever the name of that file is
+		 * un-comment-out the next line of code and comment out the line after that, then comment out the 
+		 * String file_path = JOptionPane ..... line - that will make it so you can just use a hard coded file path
 		 */
-		readInFile fileList = new readInFile("inputFiles/JobsApplicants.txt");
+		//readInFile fileList = new readInFile("inputFiles/JobsApplicants.txt");
+		readInFile fileList = new readInFile(file_path);
 		//ArrayList<String> fileReturn = fileList.readFile();
 		/*
 		 * try block for the io exception
 		 */
-		try 
-		{
 			/*
 			 * create the arraylist returned from the read in file function
 			 * then parse out that file by creating a parse object, parsing is called inherently 
@@ -294,6 +308,10 @@ public class driver{
 			e.printStackTrace();
 		}
 		
+	/*} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}*/
 			
 	}
 	/**
